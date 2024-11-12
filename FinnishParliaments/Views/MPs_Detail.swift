@@ -54,7 +54,7 @@ struct MPs_Detail: View {
                     }
                     .padding(.vertical, 4)
                 }
-                
+            
                 Divider()
                 
                 Text("About \(member.first), \(member.last)")
@@ -62,6 +62,8 @@ struct MPs_Detail: View {
                     .fontWeight(.bold)
                 
                 Text("\(member.first) was born in \(member.bornYear) and is a member of the \(member.party) party, representing \(member.constituency) with seat number \(member.seatNumber).")
+            
+            
             }
             .padding()
         }

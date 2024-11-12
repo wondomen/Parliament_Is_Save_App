@@ -17,6 +17,7 @@ struct Member: Hashable, Codable, Identifiable {
     var minister: Bool
     var bornYear: Int
     var constituency: String
+    var twitter: String?
     
     var id: Int{
         personNumber

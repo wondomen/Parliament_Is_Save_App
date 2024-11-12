@@ -14,9 +14,9 @@ struct MPImage: View {
         image
             .resizable()
             .scaledToFit()
-            .frame(width: 200, height: 200)  // Adjust the size as needed
-            .clipShape(Circle())             // Optional, use this if you want a circular image
-            .shadow(radius: 10)              // Optional, for a shadow effect
+            .frame(width: 200, height: 200)
+            .clipShape(Circle())
+            .shadow(radius: 10)      
     }
 }
 
