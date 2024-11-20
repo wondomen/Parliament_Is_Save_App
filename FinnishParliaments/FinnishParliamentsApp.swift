@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct FinnishParliamentsApp: App {
+    @StateObject private var preferences = Preferences()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(preferences)
+                .modelContainer(for: Favorite.self)  // Initialize SwiftData container
         }
     }
 }
+

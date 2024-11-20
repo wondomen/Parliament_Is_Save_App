@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5942B8042CECF8C700E53EA6 /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5942B8032CECF8C700E53EA6 /* SwiftData.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		5942B8032CECF8C700E53EA6 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
 		59A264BE2CDB6B520034ABAB /* FinnishParliaments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinnishParliaments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,16 +28,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5942B8042CECF8C700E53EA6 /* SwiftData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5942B8022CECF8C700E53EA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5942B8032CECF8C700E53EA6 /* SwiftData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		59A264B52CDB6B520034ABAB = {
 			isa = PBXGroup;
 			children = (
 				59A264C02CDB6B520034ABAB /* FinnishParliaments */,
+				5942B8022CECF8C700E53EA6 /* Frameworks */,
 				59A264BF2CDB6B520034ABAB /* Products */,
 			);
 			sourceTree = "<group>";

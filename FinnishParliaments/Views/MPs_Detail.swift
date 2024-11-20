@@ -72,6 +72,3 @@ struct MPs_Detail: View {
     }
 }
 
-#Preview {
-    MPs_Detail(member: members[0])
-}

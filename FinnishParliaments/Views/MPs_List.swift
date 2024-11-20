@@ -6,35 +6,46 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MPs_List: View {
-    @State private var showOnlyFavorites = false  // Toggle state
-    @State private var favorites = Set<Int>()     // Track favorite members by ID
+    @Binding var members: [Member]  // List of MPs passed from parent view
+    @EnvironmentObject var preferences: Preferences  // Access Preferences as an ObservableObject
+    @Environment(\.modelContext) private var context  // Access SwiftData context
+
+    @State private var showOnlyFavorites = false  // State for toggle
+
+    // Filters the members based on the user's favorite MPs.
     var filteredMembers: [Member] {
-            showOnlyFavorites ? members.filter { favorites.contains($0.id) } : members
-        }
+        showOnlyFavorites ? members.filter { preferences.favoriteMPs.contains($0.id) } : members
+    }
+
     var body: some View {
-        NavigationSplitView {
-            VStack{
+        NavigationView {
+            VStack {
+                // Toggle to switch between all MPs and favorite MPs
                 Toggle("Show Only Favorites", isOn: $showOnlyFavorites)
                     .padding()
-                
-                List (filteredMembers) {member in
-                    NavigationLink{
-                        MPs_Detail(member: member)
-                    }label:{
-                        
-                        MPs_Row(member: member, favorites: $favorites)
+
+                // List of MPs (filtered if toggle is active)
+                List(filteredMembers) { member in
+                    NavigationLink {
+                        MPs_Detail(member: member)  // Navigate to details view
+                    } label: {
+                        MPs_Row(
+                            member: member,
+                            favorites: preferences.favoriteMPs
+                        ) {
+                            preferences.toggleFavoriteMP(member.id, context: context)  // Add/remove favorite
+                        }
                     }
                 }
-                .navigationTitle("Memebers of Parliament")
             }
-        }detail: {
-            Text("Select MP's")
+            .navigationTitle("Members of Parliament")
+        }
+        .onAppear {
+            // Load favorite MPs when the view appears
+            preferences.loadFavorites(context: context)
         }
     }
-}
-
-#Preview {
-    MPs_List()
 }
